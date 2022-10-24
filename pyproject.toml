@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "example-blog-demo"
+version = "0.1.0"
+description = ""
+authors = ["Kaihong Yan <34575284+KaihongGo@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.10.1"
+flake8 = "^5.0.4"
+black = "^22.10.0"
+pre-commit = "^2.20.0"
+ipykernel = "^6.16.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.3"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+pytest-asyncio = "^0.20.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
